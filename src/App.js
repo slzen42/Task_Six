@@ -27,7 +27,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <h1>Art Gallery</h1>
+      <h1>Art Gallery by Soumyadeep</h1>
       <UploadForm addImage={addImage} />
       <div className="image-gallery">
         <ImageGallery images={images} openModal={openModal} removeImage={removeImage} />
