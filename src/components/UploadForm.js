@@ -6,7 +6,7 @@ const UploadForm = ({ addImage }) => {
   const [files, setFiles] = useState([]);
 
   const handleFileChange = (e) => {
-    setFiles(e.target.files); // Update state with the file list
+    setFiles([...e.target.files]);
   };
 
   const handleSubmit = (e) => {
@@ -15,7 +15,7 @@ const UploadForm = ({ addImage }) => {
       Array.from(files).forEach((file) => {
         const reader = new FileReader();
         reader.onloadend = () => {
-          addImage(reader.result); // Add image to the gallery
+          addImage(reader.result);
         };
         reader.readAsDataURL(file);
       });
@@ -31,11 +31,19 @@ const UploadForm = ({ addImage }) => {
         onChange={handleFileChange}
       />
       <button type="submit">Upload Images</button>
+      {files.length > 0 && (
+        <ul className="file-list">
+          {Array.from(files).map((file, index) => (
+            <li key={index}>{file.name}</li>
+          ))}
+        </ul>
+      )}
     </form>
   );
 };
 
 export default UploadForm;
+
 
 
 

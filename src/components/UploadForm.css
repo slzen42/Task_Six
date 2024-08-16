@@ -25,7 +25,11 @@
   transition: background-color 0.3s ease; /* Smooth transition for hover effect */
 }
 
-.upload-form input:hover {
+.upload-form input[type="file"] {
+  margin-bottom: 10px;
+}
+
+.upload-form input[type="file"]:hover {
   background-color: #e0e0e0;
 }
 
@@ -44,6 +48,20 @@
   background-color: #333;
   transform: scale(1.05); /* Slight scaling effect */
 }
+
+/* Additional styles for file list */
+.file-list {
+  margin-top: 10px;
+  list-style: none;
+  padding: 0;
+}
+
+.file-list li {
+  margin: 5px 0;
+  font-size: 0.9rem;
+  color: #333;
+}
+
 
 
 
