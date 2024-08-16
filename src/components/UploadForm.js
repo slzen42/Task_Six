@@ -3,21 +3,23 @@ import React, { useState } from 'react';
 import './UploadForm.css';
 
 const UploadForm = ({ addImage }) => {
-  const [file, setFile] = useState(null);
+  const [files, setFiles] = useState([]);
 
   const handleFileChange = (e) => {
-    setFile(e.target.files[0]);
+    setFiles(e.target.files); // Update state with the file list
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        addImage(reader.result);
-      };
-      reader.readAsDataURL(file);
-      setFile(null);
+    if (files.length > 0) {
+      Array.from(files).forEach((file) => {
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          addImage(reader.result); // Add image to the gallery
+        };
+        reader.readAsDataURL(file);
+      });
+      setFiles([]); // Clear files after uploading
     }
   };
 
@@ -25,13 +27,16 @@ const UploadForm = ({ addImage }) => {
     <form className="upload-form" onSubmit={handleSubmit}>
       <input
         type="file"
+        multiple
         onChange={handleFileChange}
       />
-      <button type="submit">Upload Image</button>
+      <button type="submit">Upload Images</button>
     </form>
   );
 };
 
 export default UploadForm;
+
+
 
 
