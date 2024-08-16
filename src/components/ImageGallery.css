@@ -1,0 +1,49 @@
+/* src/components/ImageGallery.css */
+.image-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  width: 80vw; /* Adjusted width to fit within the screen */
+  height: 80vh; /* Adjusted height to fit within the screen */
+  overflow: auto;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: rgba(255, 255, 255, 0.8); /* Slightly faded white background for the window */
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  position: relative;
+  transition: box-shadow 0.5s ease; /* Smooth transition for the glow effect */
+}
+
+.image-gallery.glow {
+  box-shadow: 0 0 25px rgba(0, 191, 255, 0.8); /* Soft blue glow effect */
+}
+
+.image-gallery img {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.image-gallery img.loaded {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .image-gallery {
+    width: 90vw;
+    height: 70vh;
+  }
+}
+
+@media (max-width: 480px) {
+  .image-gallery {
+    width: 95vw;
+    height: 60vh;
+  }
+}
+
+
+
+
+
